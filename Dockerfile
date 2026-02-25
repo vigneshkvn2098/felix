@@ -5,10 +5,13 @@ COPY config/openclaw.json /data/.openclaw/openclaw.json
 COPY workspace/ /data/workspace/
 COPY skills/ /data/workspace/skills/
 
-# Remove the browser upstream from nginx config to prevent crash
+# Find and patch the nginx config to remove browser upstream
 # (no browser sidecar container in single-container Railway deploy)
-RUN sed -i '/upstream browser/,/}/d' /etc/nginx/conf.d/openclaw.conf && \
-    sed -i '/location.*browser/,/}/d' /etc/nginx/conf.d/openclaw.conf
+RUN NGINX_CONF=$(find /etc/nginx -name "*.conf" -exec grep -l "upstream browser" {} \; 2>/dev/null || true) && \
+    if [ -n "$NGINX_CONF" ]; then \
+      sed -i '/upstream browser/,/}/d' "$NGINX_CONF" && \
+      sed -i '/location.*browser/,/}/d' "$NGINX_CONF"; \
+    fi
 
 # Environment
 ENV OPENCLAW_STATE_DIR=/data/.openclaw
