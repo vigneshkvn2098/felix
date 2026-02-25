@@ -2,7 +2,6 @@
 builder = "dockerfile"
 
 [deploy]
-healthcheckPath = "/"
 restartPolicyType = "on_failure"
 numReplicas = 1
 
