@@ -1,0 +1,12 @@
+[build]
+builder = "dockerfile"
+
+[deploy]
+startCommand = "openclaw gateway --port $PORT"
+healthcheckPath = "/"
+restartPolicyType = "on_failure"
+numReplicas = 1
+
+[[mounts]]
+source = "openclaw_data"
+destination = "/data"

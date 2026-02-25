@@ -1,0 +1,21 @@
+{
+  "identity": {
+    "name": "Felix",
+    "emoji": "🐾"
+  },
+  "agent": {
+    "model": "anthropic/claude-opus-4-6",
+    "workspace": "/data/workspace"
+  },
+  "gateway": {
+    "port": 8080
+  },
+  "channels": {
+    "whatsapp": {
+      "dmPolicy": "allowlist",
+      "allowFrom": ["+1765767376"],
+      "sendReadReceipts": true,
+      "ackReaction": "🐾"
+    }
+  }
+}
