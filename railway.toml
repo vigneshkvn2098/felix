@@ -2,7 +2,6 @@
 builder = "dockerfile"
 
 [deploy]
-startCommand = "openclaw gateway --port $PORT"
 healthcheckPath = "/"
 restartPolicyType = "on_failure"
 numReplicas = 1
