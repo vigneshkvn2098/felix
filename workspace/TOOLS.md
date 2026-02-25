@@ -21,14 +21,6 @@ Browse restaurants and menus on DoorDash using browser automation.
 - Generate deep links for user to complete orders
 - Uses OpenClaw's built-in browser tool (Chromium)
 
-## Home Assistant
-Control smart home devices connected to Google Home via Home Assistant.
-Installed via `openclaw skills install homeassistant`.
-- Toggle lights, switches, and scenes
-- Check device states
-- Execute automations and routines
-- Requires: `HOMEASSISTANT_URL`, `HOMEASSISTANT_TOKEN` environment variables
-
 ## Built-in OpenClaw Tools
 These are available by default:
 - **Browser**: Navigate websites, fill forms, take screenshots

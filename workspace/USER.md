@@ -15,10 +15,5 @@
 - **Working hours**: 9 AM - 5 PM
 - **Do Not Disturb**: 
 
-## Smart Home
-- **Home Assistant URL**: (configured via environment variable)
-- **Key devices**: (list your Google Home devices, lights, switches, etc.)
-- **Routines**: (e.g., "goodnight" turns off all lights and locks doors)
-
 ## Amazon
 - **Amazon email**: vigneshkvn2098@gmail.com
