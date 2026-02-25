@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  felix:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      OPENCLAW_STATE_DIR: /data/.openclaw
+      OPENCLAW_WORKSPACE_DIR: /data/workspace
+      PORT: "8080"
+      NODE_ENV: production
+    volumes:
+      - openclaw_data:/data
+    restart: unless-stopped
+
+volumes:
+  openclaw_data:
+    driver: local
