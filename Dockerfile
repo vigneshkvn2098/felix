@@ -1,10 +1,14 @@
 FROM coollabsio/openclaw:latest
 
 # Copy configuration into default locations
-# The entrypoint.sh will handle startup: configure → nginx (8080) → gateway (18789)
 COPY config/openclaw.json /data/.openclaw/openclaw.json
 COPY workspace/ /data/workspace/
 COPY skills/ /data/workspace/skills/
+
+# Remove the browser upstream from nginx config to prevent crash
+# (no browser sidecar container in single-container Railway deploy)
+RUN sed -i '/upstream browser/,/}/d' /etc/nginx/conf.d/openclaw.conf && \
+    sed -i '/location.*browser/,/}/d' /etc/nginx/conf.d/openclaw.conf
 
 # Environment
 ENV OPENCLAW_STATE_DIR=/data/.openclaw
